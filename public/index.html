@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="beerAPP">
+<head>
+  <title>GMAPS</title>
+  <script type="text/javascript" src="/angular/angular.js"></script>
+  <script type="text/javascript" src="/ngmap/build/scripts/ng-map.js"></script>
+  <script type="text/javascript" src="/angular-resource/angular-resource.js"></script>
+  <script src="http://maps.google.com/maps/api/js"></script>
+  <script type="text/javascript" src="/js/client.js"></script>
+  <script type="text/javascript" src="/js/factory.js"></script>
+</head>
+
+
+<body>
+  <div ng-controller="mainController as vm">
+    <ng-map default-style="true" center="51.5217,-0.0723" zoom="15">
+      <marker id='{{shop.id}}' position="{{shop.position}}"
+        ng-repeat="shop in vm.shops"
+        on-click="vm.showDetail(shop)">
+      </marker>
+
+      <info-window id="foo-iw">
+        <div ng-non-bindable="">
+          id: {{vm.shop.id}}<br/>
+          name: {{vm.shop.name}}<br/>
+          Position 1: {{vm.shop.position}}<br/>
+          Position 2: {{anchor.getPosition()}}<br/>
+          Position 3: {{vm.map.markers[vm.shop.id].getPosition()}}<br/>
+          <a href="#" ng-click="vm.clicked()">Click Here</a>
+        </div>
+      </info-window>
+    </ng-map>
+
+    <button ng-click="vm.showDetail(e, vm.shop)">
+      show InfoWindow of the shop
+    </button>
+    <button ng-click="vm.hideDetail(e, vm.shop)">
+      Hide InfoWindow of the shop
+    </button> 
+    <button ng-click="vm.getYelpData(vm.all)">
+      Hit up Yelp
+    </button>
+
+
+     <input type="text" ng-model="vm.search.term" placeholder="Type Something">
+     <input type="button" value="Create!" ng-click="vm.searchFor()">
+
+
+     <!-- ng-disabled="!todos.newItem.title.length" -->
+
+  </div>
+</body>
+</html>

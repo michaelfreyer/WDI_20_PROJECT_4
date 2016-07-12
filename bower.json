@@ -1,0 +1,17 @@
+{
+  "name": "gMapsAngular",
+  "authors": [
+    "Michael Freyer <michael.freyer@gmail.com>"
+  ],
+  "description": "",
+  "main": "server.js",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
