@@ -1,0 +1,23 @@
+<h1>Comment - Show</h1>
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+
+    <div class="caption">
+      <h3>{{ comments.comment.title | uppercase }}</h3>
+      <p>{{ comments.comment.description }}</p>
+      <p>{{ comments.comment.rating }}</p>
+      <br>
+
+      <a ui-sref="comment-edit({ id: comments.comment._id })">
+        <h4 class="media-heading">Edit</h4>
+      </a>
+      
+      <a href="#" ng-click="comments.deleteComment(comments.comment)">
+        <h4 class="media-heading">Delete</h4>
+      </a>
+
+     
+    </div>
+  </div>
+</div>

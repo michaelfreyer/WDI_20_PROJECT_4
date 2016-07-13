@@ -8,7 +8,7 @@ angular
 
 MainRouter.$inject = ['$stateProvider', '$urlRouterProvider','$locationProvider'];
 function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
-  $locationProvider.html5Mode(true);
+  // $locationProvider.html5Mode(true);
 
   $stateProvider
     .state('home', {
@@ -27,6 +27,10 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
       url: "/users",
       templateUrl: "./js/views/users/index.html"
     })
+    .state('comments', {
+      url: "/comments",
+      templateUrl: "./js/views/comments/index.html"
+    })
     .state('user', {
       url: "/users/:id",
       templateUrl: "./js/views/users/show.html",
@@ -35,6 +39,16 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
           $scope.$parent.users.user = res.user;
         });
       }
+    })
+    .state('comment', {
+      url: "/comments/:id/show",
+      templateUrl: "./js/views/comments/show.html",
+      controller: 'CommentsController as comments'
+    })
+    .state('comment-edit', {
+      url: "/comments/:id/edit",
+      templateUrl: "./js/views/comments/edit.html",
+      controller: 'CommentsController as comments'
     });
 
   $urlRouterProvider.otherwise("/");

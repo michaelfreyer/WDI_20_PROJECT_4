@@ -1,0 +1,14 @@
+<h1>All Comments</h1>
+
+<ul class="media-list" ng-controller="CommentsController as comments">
+  <li class="media" ng-repeat="comment in comments.all">
+    <div class="media-left">
+    <a ui-sref="comment({ id: comment._id })">
+      <h4 class="media-heading">Show</h4>
+    </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">{{ comment.title }}</h4>
+    </div>
+  </li>
+</ul>

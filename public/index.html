@@ -16,7 +16,9 @@
   <!-- Internal JS Files -->
   <script src="./js/app.js"></script>
   <script src="./js/models/user.js"></script>
+  <script src="./js/models/comment.js"></script>
   <script src="./js/controllers/usersController.js"></script>
+  <script src="./js/controllers/commentsController.js"></script>
   <script src="js/services/authInterceptor.js"></script>
   <script src="js/services/tokenService.js"></script>
   <script src="js/services/currentUser.js"></script>
@@ -49,6 +51,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
+            
             <li ng-show="users.checkLoggedIn()">
               <a href="#" ui-sref="users">Users</a>
             </li>
@@ -57,6 +60,9 @@
             </li>
             <li ng-hide="users.checkLoggedIn()">
               <a href="#" ui-sref="register">Register</a>
+            </li>
+            <li ng-show="users.checkLoggedIn()">
+              <a href="#" ui-sref="comments">Comments</a>
             </li>
             <li ng-show="users.checkLoggedIn()">
               <a href="#"ui-sref="home" ng-click="users.logout()">Logout</a>
