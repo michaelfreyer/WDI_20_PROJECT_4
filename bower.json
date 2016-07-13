@@ -1,11 +1,11 @@
 {
-  "name": "gMapsAngular",
+  "name": "find-the-spot",
+  "description": "",
+  "main": "server.js",
   "authors": [
     "Michael Freyer <michael.freyer@gmail.com>"
   ],
-  "description": "",
-  "main": "server.js",
-  "license": "MIT",
+  "license": "ISC",
   "homepage": "",
   "ignore": [
     "**/.*",

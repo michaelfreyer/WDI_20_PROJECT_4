@@ -1,53 +1,73 @@
 <!DOCTYPE html>
-<html ng-app="beerAPP">
+<html ng-app="logging">
 <head>
-  <title>GMAPS</title>
-  <script type="text/javascript" src="/angular/angular.js"></script>
-  <script type="text/javascript" src="/ngmap/build/scripts/ng-map.js"></script>
-  <script type="text/javascript" src="/angular-resource/angular-resource.js"></script>
-  <script src="http://maps.google.com/maps/api/js"></script>
-  <script type="text/javascript" src="/js/client.js"></script>
-  <script type="text/javascript" src="/js/factory.js"></script>
+  <title>Find-it</title>
+
+  <!-- Internal BOWER Files -->
+  <script src="angular/angular.js"></script>  
+  <script src="angular-messages/angular-messages.js"></script>
+  <script src="angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="angular-jwt/dist/angular-jwt.js"></script>
+  <script src="angular-resource/angular-resource.js"></script>
+  <script src="jquery/dist/jquery.js"></script>
+  <script src="bootstrap/dist/js/bootstrap.js"></script>
+
+
+  <!-- Internal JS Files -->
+  <script src="./js/app.js"></script>
+  <script src="./js/models/user.js"></script>
+  <script src="./js/controllers/usersController.js"></script>
+  <script src="js/services/authInterceptor.js"></script>
+  <script src="js/services/tokenService.js"></script>
+  <script src="js/services/currentUser.js"></script>
+
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css" >
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+
+
+  <!-- Base tag for HTML -->
+  <base href="/" />
+
 </head>
-
-
-<body>
-  <div ng-controller="mainController as vm">
-    <ng-map default-style="true" center="51.5217,-0.0723" zoom="15">
-      <marker id='{{shop.id}}' position="{{shop.position}}"
-        ng-repeat="shop in vm.shops"
-        on-click="vm.showDetail(shop)">
-      </marker>
-
-      <info-window id="foo-iw">
-        <div ng-non-bindable="">
-          id: {{vm.shop.id}}<br/>
-          name: {{vm.shop.name}}<br/>
-          Position 1: {{vm.shop.position}}<br/>
-          Position 2: {{anchor.getPosition()}}<br/>
-          Position 3: {{vm.map.markers[vm.shop.id].getPosition()}}<br/>
-          <a href="#" ng-click="vm.clicked()">Click Here</a>
+<body ng-controller="UsersController as users">
+  <header>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#" ui-sref-active="active" ui-sref="home">Angular Authentication</a>
         </div>
-      </info-window>
-    </ng-map>
 
-    <button ng-click="vm.showDetail(e, vm.shop)">
-      show InfoWindow of the shop
-    </button>
-    <button ng-click="vm.hideDetail(e, vm.shop)">
-      Hide InfoWindow of the shop
-    </button> 
-    <button ng-click="vm.getYelpData(vm.all)">
-      Hit up Yelp
-    </button>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li ng-show="users.checkLoggedIn()">
+              <a href="#" ui-sref="users">Users</a>
+            </li>
+            <li ng-hide="users.checkLoggedIn()">
+              <a href="#" ui-sref="login">Login</a>
+            </li>
+            <li ng-hide="users.checkLoggedIn()">
+              <a href="#" ui-sref="register">Register</a>
+            </li>
+            <li ng-show="users.checkLoggedIn()">
+              <a href="#"ui-sref="home" ng-click="users.logout()">Logout</a>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+  </header>
 
+  <main class="container" ui-view></main>
 
-     <input type="text" ng-model="vm.search.term" placeholder="Type Something">
-     <input type="button" value="Create!" ng-click="vm.searchFor()">
-
-
-     <!-- ng-disabled="!todos.newItem.title.length" -->
-
-  </div>
 </body>
 </html>

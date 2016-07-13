@@ -1,11 +1,21 @@
-var express = require('express'),
-    router = express.Router(),
-    bodyParser = require('body-parser'),
-    methodOverride = require('method-override');
+var express = require('express');
+var router  = express.Router();
 
-var yelpController = require('../controllers/yelps');
+var usersController = require('../controllers/usersController');
+var authenticationsController = require('../controllers/authenticationsController');
 
-router.route('/api/yelps')
-    .get(yelpController.getAll)
+router.post('/login', authenticationsController.login);
+router.post('/register', authenticationsController.register);
 
-    module.exports = router
+router.route('/')
+  .get(usersController.usersIndex);
+
+router.route('/users')
+  .get(usersController.usersIndex);
+
+router.route('/users/:id')
+  .get(usersController.usersShow)
+  .patch(usersController.usersUpdate)
+  .delete(usersController.usersDelete);
+
+module.exports = router;
