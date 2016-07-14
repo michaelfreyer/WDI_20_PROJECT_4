@@ -1,0 +1,40 @@
+<h1>Create Comment</h1>
+
+<form id="edit" name="comments.loginForm" ng-submit="comments.createComment(users.currentUser._id)" novalidate>
+  <div class="alert alert-danger" role="alert" ng-show="(!!comments.error && comments.loginForm.$submitted)">{{ comments.error }}</div>
+
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="email" placeholder="Please put a title" name="title" ng-model="comments.comment.title" required>
+  </div>
+
+  <div class="alert alert-danger" role="alert" ng-messages="comments.loginForm['title'].$error" ng-show="(comments.loginForm.$submitted && comments.loginForm['title'].$invalid)">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    <span ng-message="required">Title is required.</span>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Description</label>
+    <input type="text" class="form-control" id="description" name="description"  placeholder="description" ng-model="comments.comment.description" required>
+  </div>
+
+  <div class="alert alert-danger" role="alert" ng-messages="comments.loginForm['description'].$error" ng-show="(comments.loginForm.$submitted && comments.loginForm['description'].$invalid)">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    <span ng-message="required">Description is required.</span>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Rating</label>
+    <input type="text" class="form-control" id="rating" name="rating"  placeholder="rating" ng-model="comments.comment.rating" required>
+  </div>
+
+  <div class="alert alert-danger" role="alert" ng-messages="comments.loginForm['rating'].$error" ng-show="(comments.loginForm.$submitted && comments.loginForm['rating'].$invalid)">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    <span ng-message="required">Rating is required.</span>
+  </div>
+
+    <button type="submit" class="btn btn-default">Create</button>
+  </form>

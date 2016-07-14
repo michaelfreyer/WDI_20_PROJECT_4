@@ -51,7 +51,6 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            
             <li ng-show="users.checkLoggedIn()">
               <a href="#" ui-sref="users">Users</a>
             </li>
@@ -65,7 +64,10 @@
               <a href="#" ui-sref="comments">Comments</a>
             </li>
             <li ng-show="users.checkLoggedIn()">
-              <a href="#"ui-sref="home" ng-click="users.logout()">Logout</a>
+              <a href="#" ui-sref="comment-create">New Comment</a>
+            </li>
+            <li ng-show="users.checkLoggedIn()">
+              <a href="#" ui-sref="home" ng-click="users.logout()">Logout</a>
             </li>
           </ul>
         </div><!-- /.navbar-collapse -->

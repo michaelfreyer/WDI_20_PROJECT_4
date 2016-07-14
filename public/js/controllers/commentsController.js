@@ -12,6 +12,7 @@ function CommentsController(Comment, $state){
   self.getComments     = getComments;
   self.deleteComment   = deleteComment;
   self.updateComment   = updateComment;
+  self.createComment   = createComment;
   self.comment         = null;
 
   // ~~~~~~~~~~~~~~~~~COMMENTS-INDEX~~~~~~~~~~~~~
@@ -43,6 +44,18 @@ function CommentsController(Comment, $state){
       self.comment = null;
       $state.go('comments');
    });
+  }
+
+  // ~~~~~~~~~~~~~~~~~~CREATE~~~~~~~~~~~~~~~~~~~~
+
+  function createComment(user){
+    console.log("You Cliked Create Comment");
+    self.comment.user = user
+    console.log(self.comment)
+    Comment.save(self.comment)
+    self.comment = null;
+    $state.go('comments');
+
   }
 
 

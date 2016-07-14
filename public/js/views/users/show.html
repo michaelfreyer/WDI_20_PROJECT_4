@@ -1,11 +1,26 @@
 <section>
   <div class="row">
     <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
       <img ng-src="{{ users.user.local.image }}">
-      <div class="caption">
+        
+        <div class="caption">
         <h3>{{ users.user.local.fullname | uppercase }}</h3>
-        <p>{{ users.user.local.email }}</p>
-        <button class='delete' ng-click="users.deleteUser(users.user)">X</button>
+          <p>{{ users.user.local.email }}</p>
+        </div>
+
+        <div class="panel panel-default" ng-repeat="comment in users.user.comments">
+          <div class="panel-heading">
+            <h3 class="panel-title">{{ comment.title }}</h3>
+          </div>
+          <div class="panel-body">
+            {{ comment.description }}
+            <span class="badge">{{ comment.rating }}</span>
+          </div>
+        </div>
+
+        <p><a href="#" class="btn btn-primary" ng-click="users.deleteUser(users.user)" role="button">Delete User</a> <a href="#" class="btn btn-default" role="button">Edit User</a></p>
+
       </div>
     </div>
   </div>

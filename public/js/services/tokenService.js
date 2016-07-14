@@ -29,7 +29,7 @@ angular
       var token = self.getToken();
       if (token) {
         var decodedUser = jwtHelper.decodeToken(token);
-        return token ? decodedUser._doc : null;
+        return token ? decodedUser.$__.scope : null;
       }
     }
   }

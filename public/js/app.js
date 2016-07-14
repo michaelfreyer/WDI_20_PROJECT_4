@@ -49,6 +49,11 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
       url: "/comments/:id/edit",
       templateUrl: "./js/views/comments/edit.html",
       controller: 'CommentsController as comments'
+    })
+    .state('comment-create', {
+      url: "/comments/create",
+      templateUrl: "./js/views/comments/create.html",
+      controller: 'CommentsController as comments'
     });
 
   $urlRouterProvider.otherwise("/");

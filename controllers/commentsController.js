@@ -9,11 +9,11 @@ function commentsIndex(req, res) {
 }
 
 function commentCreate(req, res){
-  var comment = new Comment(req.body.comment);
+  var comment = new Comment(req.body);
 
     comment.save(function(err){
       if (err) return res.status(500).send(err);
-      var id = req.body.comment.user
+      var id = req.body.user;
 
       User.findOne({ _id: id }, function(err, user){
          user.comments.push(comment);
