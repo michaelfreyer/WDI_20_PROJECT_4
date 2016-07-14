@@ -35,8 +35,8 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
       url: "/users/:id",
       templateUrl: "./js/views/users/show.html",
       controller: function($scope, $stateParams, User) {
-        User.get({ id: $stateParams.id }, function(res){
-          $scope.$parent.users.user = res.user;
+        User.get({ id: $stateParams.id }, function(user){
+          $scope.$parent.users.user = user;
         });
       }
     })
@@ -44,8 +44,8 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
       url: "/users/:id/edit",
       templateUrl: "./js/views/users/edit.html",
       controller: function($scope, $stateParams, User) {
-        User.get({ id: $stateParams.id }, function(res){
-          $scope.$parent.users.user = res.user;
+        User.get({ id: $stateParams.id }, function(user){
+          $scope.$parent.users.user = user;
         });
       }
     })

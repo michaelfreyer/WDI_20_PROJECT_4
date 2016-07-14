@@ -17,6 +17,7 @@ function UsersController(User, CurrentUser, $state){
   self.logout        = logout;
   self.checkLoggedIn = checkLoggedIn;
   self.deleteUser    = deleteUser;
+  self.updateUser    = updateUser;
 
   function getUsers() {
     User.query(function(data){
@@ -69,7 +70,9 @@ function UsersController(User, CurrentUser, $state){
   // ~~~~~~~~~~~~~~~~~~UPDATE-USER~~~~~~~~~~~~~~~~~
 
   function updateUser(user) {
-    console.log("You clicked me");
+    self.user.$update(function(data, err){
+        console.log(data,err);
+    });
   }
 
 

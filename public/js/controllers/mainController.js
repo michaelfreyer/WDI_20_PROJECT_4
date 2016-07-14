@@ -40,7 +40,17 @@ function mainCtrl(NgMap, $resource, Yelp){
              console.log('LAT'+': '+vm.all[i].location.coordinate.latitude);
              console.log('LONG'+': '+vm.all[i].location.coordinate.longitude);
 
-              vm.tempObj = {id: vm.all[i].id, name: vm.all[i].name, position: [vm.all[i].location.coordinate.latitude, vm.all[i].location.coordinate.longitude]};
+             vm.tempObj = {
+                               id: vm.all[i].id, 
+                               name: vm.all[i].name, 
+                               position: [vm.all[i].location.coordinate.latitude, vm.all[i].location.coordinate.longitude], 
+
+                               address: vm.all[i].location.display_address.join(" "), 
+                               snippet: vm.all[i].snippet_text, 
+                               rating: vm.all[i].rating, 
+                               phone: vm.all[i].phone, 
+                               img: vm.all[i].image_url
+                           };
 
              vm.shops.push(vm.tempObj);
          }
