@@ -1,6 +1,6 @@
 <h1>Create Comment</h1>
 
-<form id="edit" name="comments.loginForm" ng-submit="comments.createComment(users.currentUser._id)" novalidate>
+<form id="edit" name="comments.loginForm" ng-submit="comments.createComment()" novalidate>
   <div class="alert alert-danger" role="alert" ng-show="(!!comments.error && comments.loginForm.$submitted)">{{ comments.error }}</div>
 
   <div class="form-group">

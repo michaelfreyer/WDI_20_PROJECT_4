@@ -1,6 +1,12 @@
 angular
-  .module('logging', ['ngResource', 'angular-jwt', 'ui.router', 'ngMap'])
+  .module('logging', ['ngResource', 'angular-jwt', 'ui.router', 'ngMap', 'ui.bootstrap'])
   .constant('API', 'http://localhost:3000/api')
+  .run(function($rootScope) {
+    $rootScope.hello = function(data) {
+      this.word = data
+      console.log(this.word);
+    }
+  })
   .config(MainRouter)
   .config(function($httpProvider) {
       $httpProvider.interceptors.push('authInterceptor');
@@ -56,9 +62,7 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('yelp-search', {
       url: "/yelp-search",
-      templateUrl: "./js/views/yelps/search.html",
-      controller: 'mainController as vm'
-
+      templateUrl: "./js/views/yelps/search.html"
     })
     .state('comment-edit', {
       url: "/comments/:id/edit",

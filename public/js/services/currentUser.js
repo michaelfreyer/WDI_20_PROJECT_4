@@ -8,6 +8,8 @@ function CurrentUser(TokenService){
     self.getUser = getUser;
     self.clearUser = clearUser;
     self.user = getUser();
+    self.id   = null;
+    self.sorted = [];
 
     function getUser() {
         return self.user ? self.user : TokenService.decodeToken();
