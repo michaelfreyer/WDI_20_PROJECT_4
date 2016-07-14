@@ -1,5 +1,5 @@
 angular
-  .module('logging', ['ngResource', 'angular-jwt', 'ui.router'])
+  .module('logging', ['ngResource', 'angular-jwt', 'ui.router', 'ngMap'])
   .constant('API', 'http://localhost:3000/api')
   .config(MainRouter)
   .config(function($httpProvider) {
@@ -53,6 +53,12 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
       url: "/comments/:id/show",
       templateUrl: "./js/views/comments/show.html",
       controller: 'CommentsController as comments'
+    })
+    .state('yelp-search', {
+      url: "/yelp-search",
+      templateUrl: "./js/views/yelps/search.html",
+      controller: 'mainController as vm'
+
     })
     .state('comment-edit', {
       url: "/comments/:id/edit",
