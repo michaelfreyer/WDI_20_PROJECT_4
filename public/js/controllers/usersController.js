@@ -66,6 +66,12 @@ function UsersController(User, CurrentUser, $state){
       });
   }
 
+  // ~~~~~~~~~~~~~~~~~~UPDATE-USER~~~~~~~~~~~~~~~~~
+
+  function updateUser(user) {
+    console.log("You clicked me");
+  }
+
 
   if (checkLoggedIn()) {
     self.getUsers();

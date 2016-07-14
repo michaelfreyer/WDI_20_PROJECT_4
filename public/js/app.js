@@ -40,6 +40,15 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
         });
       }
     })
+    .state('user-edit', {
+      url: "/users/:id/edit",
+      templateUrl: "./js/views/users/edit.html",
+      controller: function($scope, $stateParams, User) {
+        User.get({ id: $stateParams.id }, function(res){
+          $scope.$parent.users.user = res.user;
+        });
+      }
+    })
     .state('comment', {
       url: "/comments/:id/show",
       templateUrl: "./js/views/comments/show.html",
